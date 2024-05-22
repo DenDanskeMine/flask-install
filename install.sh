@@ -13,7 +13,7 @@ if ! command -v python3 &> /dev/null
 then
     echo "Python 3 could not be found. Installing..."
     sudo apt-get update
-    sudo apt-get install python3.8 -y
+    sudo apt-get install python3.12 -y
 fi
 
 # Check if pip is installed, if not, install it
@@ -27,7 +27,7 @@ fi
 if ! python3 -c "import venv" &> /dev/null
 then
     echo "venv could not be found. Installing..."
-    sudo apt-get install python3.8-venv -y
+    sudo apt-get install python3.12-venv -y
 fi
 # Create a new directory with the project name
 mkdir $project_name
