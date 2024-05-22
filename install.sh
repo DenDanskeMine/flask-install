@@ -9,12 +9,26 @@
 echo "Enter the project name:"
 read project_name
 
+if ! command -v python3 &> /dev/null
+then
+    echo "Python 3 could not be found. Installing..."
+    sudo apt-get update
+    sudo apt-get install python3.12 -y
+fi
 
-sudo apt-get update
-sudo apt-get install python3.12 -y
-sudo apt-get install python3-pip -y
-sudo apt-get install python3.12-venv -y
+# Check if pip is installed, if not, install it
+if ! command -v pip3 &> /dev/null
+then
+    echo "pip for Python 3 could not be found. Installing..."
+    sudo apt-get install python3-pip -y
+fi
 
+# Check if venv is installed, if not, install it
+if ! python3 -c "import venv" &> /dev/null
+then
+    echo "venv could not be found. Installing..."
+    sudo apt-get install python3.12-venv -y
+fi
 # Create a new directory with the project name
 mkdir $project_name
 
